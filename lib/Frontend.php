@@ -24,6 +24,8 @@ class Frontend extends ApiFrontend{
     {
         $auth = $this->add('ApplicationAuth');
         $l = $this->add('Layout_Fluid');
+        $this->auth->check();
+        $this->addStylesheet("style");
         parent::initLayout();
     }
 
