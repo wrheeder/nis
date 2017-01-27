@@ -16,14 +16,15 @@ class Page_Projects_Tasks extends Page {
        $this->js("reloadpage", $this->js()->_selector('.reloadable_grid')->reload());
         
         if($this->api->auth->get('can_update_actual'))
-            //$tasks_grid->addColumn('grid/ClaimButton','ClaimActuals');
+            $tasks_grid->addColumn('expander','ClaimActuals');
         if($this->api->auth->get('can_update_forecast'))
-            $tasks_grid->addColumn('grid/ReForecastButton','ReForecast');
+            //$tasks_grid->addColumn('grid/ReForecastButton','ReForecast');
         $tasks_grid->addColumn('expander', 'History');
         //$tasks_grid->addFormatter('actual','grid/inline');
 //        if($_GET['field']=='actual'){
 //            
 //        }
+
     }
 
     
