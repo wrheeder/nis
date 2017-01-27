@@ -7,6 +7,8 @@
  */
 
 class Frontend extends ApiFrontend{
+    var $leftBar;
+    var $mm;
     function init()
     {
         parent::init();
@@ -24,6 +26,23 @@ class Frontend extends ApiFrontend{
     {
         $auth = $this->add('ApplicationAuth');
         $l = $this->add('Layout_Fluid');
+        $m = $l->add('Menu_Horizontal', null, 'Top_Menu');
+        $m->addMenuItem('index', 'Home');
+        if ($auth->isLoggedIn()) {
+            $l->template->Set('user_icon','http://www.gravatar.com/avatar/wrheeder');
+            if ($auth->get('config_data_menu')) {
+                //        $m->addMenuItem('configdata', 'Config Data Importer');
+            }
+            //           $l->template->tryDel('user_icon');
+            /* if ($auth->canUploadSites()) {
+                 $m->addMenuItem('SiteUploader', 'Site Upload');
+             }*/
+            if ($auth->isAdmin()) {
+                $m->addMenuItem('Admin','Admin');
+            }
+
+        }
+        $this->mm=$this->leftBar=$l->addLeftBar();
         $this->auth->check();
         $this->addStylesheet("style");
         parent::initLayout();

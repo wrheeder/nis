@@ -1,0 +1,30 @@
+This add-on will allow you to have extended features for Grid.
+
+Installation:
+    Check readme file of ds-addons pack.
+
+Dependencies:
+	none
+
+Usage:
+	Use it in Page like this:
+
+	Example with Grid:
+		$g = $page->add('Grid/Grid_Extended');
+		$g->setModel('Example');
+		
+		$g->addExtendedSearch(array('name','salary','is_active','notes'));
+
+		$g->addToolbar()->set('Toolbar number 1');
+		$g->addActionToolbar();
+		$g->addToolbar()->set('One more toolbar. You can use them as you wish.');
+	
+	Usage with CRUD:
+		You can use all features of this Grid also in CRUD:
+		$page->add('Grid/CRUD_Extended');
+
+Known problems:
+    none
+    
+Author:
+	Imants Horsts

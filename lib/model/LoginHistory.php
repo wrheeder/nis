@@ -10,7 +10,6 @@ class Model_LoginHistory extends Model_Table {
         $this->addField('action');
         $this->addField('date')->type('datetime');
         $this->addField('ip');
-		 
     }
 
 }
