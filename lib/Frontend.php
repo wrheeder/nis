@@ -15,12 +15,17 @@ class Frontend extends ApiFrontend{
         $this->api_public_path = dirname(@$_SERVER['SCRIPT_FILENAME']);
         $this->api_base_path = dirname(dirname(@$_SERVER['SCRIPT_FILENAME']));
         $this->dbConnect();
+
+
+        $this->api->db2=$this->api->add('DB')
+            ->connect('dsn1');
         $this->addLocations();
         $this->addProjectLocations();
         $this->addAddonsLocations();
         $this->add('jUI');
         $this->initAddons();
     }
+
 
     function initLayout()
     {
@@ -31,7 +36,7 @@ class Frontend extends ApiFrontend{
         if ($auth->isLoggedIn()) {
             $l->template->Set('user_icon','http://www.gravatar.com/avatar/wrheeder');
             if ($auth->get('config_data_menu')) {
-                //        $m->addMenuItem('configdata', 'Config Data Importer');
+                        $m->addMenuItem('configData', 'Config Data Importer');
             }
             //           $l->template->tryDel('user_icon');
             /* if ($auth->canUploadSites()) {

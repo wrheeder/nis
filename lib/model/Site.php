@@ -14,11 +14,13 @@ class Model_Site extends Model_Table {
         $this->hasOne('Regions', null, 'region')->caption('Region');
         $this->addField('latitude')->display(array('form' => 'maskedinput/maskedinput'))->mandatory(true);
         $this->addField('longitude')->display(array('form' => 'maskedinput/maskedinput'))->mandatory(true);
-        $this->addField('corr_lat')->display(array('form' => 'maskedinput/maskedinput'))->caption('Corrected Latitude');
-        $this->addField('corr_lon')->display(array('form' => 'maskedinput/maskedinput'))->caption('Corrected Longitude');
+        //$this->addField('corr_lat')->display(array('form' => 'maskedinput/maskedinput'))->caption('Corrected Latitude');
+        //$this->addField('corr_lon')->display(array('form' => 'maskedinput/maskedinput'))->caption('Corrected Longitude');
         $this->hasOne('siteOwner', null, 'site_owner')->mandatory(true);
         $this->hasOne('coloOwner', null, 'colo_owner');
         $this->hasOne('siteType', null, 'site_type')->mandatory(true);
+        //$this->addField('build_type')->enum(array('xx','yy','zzz'));
+        $this->hasOne('buildType', null, 'build_type')->mandatory(true);
         $this->addField('site_name_used')->enum(array('mLog', 'Lease', 'Assumed'));
         $this->hasMany('Lease');
         $this->addField('on_air_status')->enum(array('2G', '3G', '2G/3G','LTE'));

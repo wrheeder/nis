@@ -53,7 +53,7 @@ class Page_Site extends Page {
             $m->showMap();
             $m->setMarker(array('lat' => $m_site->get('latitude'), 'lng' => $m_site->get('longitude'), 'name' => $m_site->getMarkerHtml(), 'thumb' => '../vendor/jsTree/js/themes/default/red-broadcast-tower-icon_sml.png'));
             $fld_ro = true;
-            //$m->drawSector($m_site->get('latitude'), $m_site->get('longitude'),1500,90,36,360,'#000000','#FF0000',true);
+            $m->drawSector($m_site->get('latitude'), $m_site->get('longitude'),1500,90,36,45,'#000000','#FF0000',true);
         } else {
             $fld_ro = false;
             $site_id = 'New Site';
@@ -66,17 +66,17 @@ class Page_Site extends Page {
             $ve->add('H3')->set('Creating New Site');
         }
 
-        $field_arr = array('site_code', 'candidate_letter', 'site_name', 'candidate_status', 'latitude', 'longitude', 'corr_lat', 'corr_lon', 'lease_id', 'owner_id', 'colo_owner_id', 'site_type_id', 'site_name_used','on_air_status');
+        $field_arr = array('site_code', 'candidate_letter', 'site_name', 'candidate_status', 'latitude', 'longitude', 'lease_id', 'owner_id', 'colo_owner_id', 'site_type_id','build_type_id', 'site_name_used','on_air_status');
         if ($this->api->auth->get('can_change_region') && $site_id != 'New Site')
-            $field_arr = array('site_code', 'candidate_letter', 'site_name', 'candidate_status', 'latitude', 'longitude', 'corr_lat', 'corr_lon', 'regions_id', 'lease_id', 'owner_id', 'colo_owner_id', 'site_type_id', 'site_name_used','on_air_status');
+            $field_arr = array('site_code', 'candidate_letter', 'site_name', 'candidate_status', 'latitude', 'longitude', 'regions_id', 'lease_id', 'owner_id', 'colo_owner_id', 'site_type_id','build_type_id', 'site_name_used','on_air_status');
         $f->setModel($m_site, $field_arr);
         if ($fld_ro) {
             $f->getElement('site_code')->setAttr('readonly', true);
         }
         $f->getElement('latitude')->setMask('-d9.99?9999');
         $f->getElement('longitude')->setMask('99.99?9999');
-        $f->getElement('corr_lat')->setMask('-d9.99?9999');
-        $f->getElement('corr_lon')->setMask('99.99?9999');
+       // $f->getElement('corr_lat')->setMask('-d9.99?9999');
+       // $f->getElement('corr_lon')->setMask('99.99?9999');
         $f->addSubmit('Update');
 
         $h = $this->add('View_History')->set('History');
@@ -148,6 +148,10 @@ class Page_Site extends Page {
                 }
                 if ($f->model->get('site_name_used') != $f->get('site_name_used')) {
                     $hist->history_push($f->model->get('id'), 'site_name_used', $f->model->get('site_name_used'), $f->get('site_name_used'), 'Site Name Used Updated', $this->api->auth->get('id'));
+                }
+                if ($f->model->get('build_type_id') != $f->get('build_type_id')) {
+                    $build_type = $this->api->db->dsql()->table('build_type')->field('build_type')->where('id', $f->get('build_type_id'))->do_getOne();
+                    $hist->history_push($f->model->get('id'), 'build_type', $f->model->get('build_type'), $build_type, 'Build Type Updated', $this->api->auth->get('id'));
                 }
 //                die(var_dump($f->get()));
 //                if($f['site_code']=='1234') return $f->error('site_code','site exists');

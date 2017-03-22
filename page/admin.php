@@ -14,6 +14,7 @@ class page_admin extends Page{
             $site_owners = $tabs->addTab('Site_Owner')->add("CRUD");
             $colo_owners = $tabs->addTab('Colo-Owners')->add("CRUD");
             $site_types = $tabs->addTab('Site_Types')->add("CRUD");
+            $build_types = $tabs->addTab('Build_Types')->add("CRUD");
             $m_usr = $user->setModel('Users', array('email', 'name', 'surname','can_change_region','can_add_site','can_update_baseline','can_update_forecast','can_update_actual', 'isAdmin','user_must_change_pw','rollout_menu','config_data_menu','can_upload_sites'));
             $m_regs = $regions->setModel('Regions');
             $m_project_types = $project_types->setModel('ProjectTypes');
@@ -21,6 +22,7 @@ class page_admin extends Page{
             $site_owners->setModel('siteOwner');
             $colo_owners->setModel('coloOwner');
             $site_types->setModel('sitetype');
+            $build_types->setModel('buildType');
             //$ap_crud->grid->addButton('Expander','Sections');
                     
             $this->api->stickyGet('id');

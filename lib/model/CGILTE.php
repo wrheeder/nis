@@ -1,26 +1,19 @@
 <?php
-class Model_Cgi3G extends Model_Table{
-    public $table = 'cgi_3g';
+class Model_CgiLTE extends Model_Table{
+    public $table = 'cgi_LTE';
     
     function init() {
         parent::init();
         $this->addField('cgi')->required(true);
         $this->addField('vendor');
         $this->addField('region');
-//        $this->addField('msc');
-        $this->addField('rncname');
-        $this->addField('rncid');
-        $this->addField('siteid');
+        $this->addField('enodebid');
         $this->addField('sitename');
-        $this->addField('btsid');
-        $this->addField('ci');
-        $this->addField('lac');
-        $this->addField('rac');
         $this->addField('name');
-        $this->addField('uarfcn');
-        $this->addField('priscrcode');
-        $this->addField('cpichpower');
-        $this->addField('totalpower');
+        $this->addField('cellid');
+        $this->addField('phycellid');
+        $this->addField('tac');
+        $this->addField('dlearfcn');
         $this->addField('removed')->type('boolean');
         
     }

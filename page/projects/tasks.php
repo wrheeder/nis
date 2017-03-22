@@ -4,7 +4,6 @@ class Page_Projects_Tasks extends Page {
 
     function init() {
         parent::init();
-        
         $this->api->stickyGet('sel_node');
         $this->api->stickyGet('project_id');
         $tasks_grid = $this->add('Grid');
@@ -24,9 +23,5 @@ class Page_Projects_Tasks extends Page {
 //        if($_GET['field']=='actual'){
 //            
 //        }
-
     }
-
-    
-
 }

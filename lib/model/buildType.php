@@ -1,11 +1,11 @@
 <?php
 
-class Model_siteType extends Model_Table {
-    public $table = 'site_type';
+class Model_buildType extends Model_Table {
+    public $table = 'build_type';
 
     function init() {
         parent::init();
-        $this->addField('site_type');
+        $this->addField('build_type');
     }
 
 }

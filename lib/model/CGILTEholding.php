@@ -1,6 +1,6 @@
 <?php
-class Model_Cgi3GHolding extends Model_CGI3G{
-    public $table = 'cgi_3G_holding';
+class Model_CgiLTEHolding extends Model_CGILTE{
+    public $table = 'cgi_LTE_holding';
     
     function init() {
         parent::init();        
