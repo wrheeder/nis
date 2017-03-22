@@ -1,0 +1,38 @@
+[
+    {
+        "name": "atk4/atk4",
+        "version": "4.3.2",
+        "version_normalized": "4.3.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/atk4/atk4.git",
+            "reference": "0eb774a28165db5cca5b0520851d212f11ade6f9"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/atk4/atk4/zipball/0eb774a28165db5cca5b0520851d212f11ade6f9",
+            "reference": "0eb774a28165db5cca5b0520851d212f11ade6f9",
+            "shasum": ""
+        },
+        "time": "2016-02-29 12:21:49",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "": "lib/"
+            },
+            "files": [
+                "/lib/static.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "homepage": "https://agiletoolkit.org/",
+        "keywords": [
+            "atk4",
+            "framework"
+        ]
+    }
+]
